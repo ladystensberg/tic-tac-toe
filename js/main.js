@@ -20,7 +20,10 @@
 
 /*----- app's state (variables) -----*/
 
-
+var playedTiles;
+var resetGame;
+var lastMove;
+var move;
 
 
 /*----- cached element references -----*/
@@ -28,18 +31,47 @@
 var body = document.body;
 var resetButton = document.querySelector("button");
 var gameBoard = document.getElementById("game-board");
+var gameTiles = document.getElementById("game-board").children;
 
 
 /*----- event listeners -----*/
 
 gameBoard.addEventListener("click", function(event) {
-    console.log(event.target.id);
-    event.target.src = "img/sun.png";
+    switch (lastMove) {
+        case "sun":
+            event.target.src = "img/cloud.png";
+            lastMove = "cloud";
+            break;
+        case "cloud":
+            event.target.src = "img/sun.png";
+            lastMove = "sun";
+            break;
+        default:
+            event.target.src = "img/sun.png";
+            lastMove = "sun";
+            break;
+    }
 })
 
 
 /*----- functions -----*/
 
+
+function initGame() {
+    playedTiles = [];
+    console.log(gameTiles);
+    for (let tile in gameTiles) {
+        gameTiles[tile].innerHTML = "<img src='img/rainbow.png'>";
+    }
+}
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
 });
+
+
+initGame();
