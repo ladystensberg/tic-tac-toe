@@ -23,7 +23,7 @@
 var playedTiles;
 var resetGame;
 var lastMove;
-var move;
+var moves = [];
 
 
 /*----- cached element references -----*/
@@ -37,21 +37,27 @@ var gameTiles = document.getElementById("game-board").children;
 /*----- event listeners -----*/
 
 gameBoard.addEventListener("click", function(event) {
+
+    var singleTile = event.target.parentNode.id;
+
+    if (moves.includes(singleTile)) {
+        return;  
+    } else {
+        moves.push(singleTile);
+    }
+
     switch (lastMove) {
         case "sun":
             event.target.src = "img/cloud.png";
             lastMove = "cloud";
             break;
         case "cloud":
-            event.target.src = "img/sun.png";
-            lastMove = "sun";
-            break;
         default:
             event.target.src = "img/sun.png";
             lastMove = "sun";
-            break;
     }
-})
+
+});
 
 
 /*----- functions -----*/
