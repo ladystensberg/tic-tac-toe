@@ -36,6 +36,8 @@ var gameTiles = document.getElementById("game-board").children;
 
 /*----- event listeners -----*/
 
+resetButton.addEventListener("click", resetGame);
+
 gameBoard.addEventListener("click", function(event) {
 
     var singleTile = event.target.parentNode.id;
@@ -59,21 +61,20 @@ gameBoard.addEventListener("click", function(event) {
 
 });
 
-resetButton.addEventListener("click", resetGame);
-
 
 /*----- functions -----*/
 
 
 function initGame() {
-    playedTiles = [];
-    console.log(gameTiles);
     for (let tile in gameTiles) {
         gameTiles[tile].innerHTML = "<img src='img/rainbow.png'>";
     }
 }
 
 function resetGame() {
+    playedTiles = [];
+    moves = [];
+    lastMove = "";
     initGame();
 }
 
