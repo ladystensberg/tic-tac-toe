@@ -34,7 +34,7 @@ var gameBoard = document.getElementById("game-board");
 
 gameBoard.addEventListener("click", function(event) {
     console.log(event.target.id);
-    event.target.innerHTML = "<h5>" + event.target.id + "</h5>";
+    event.target.src = "img/sun.png";
 })
 
 

@@ -17,9 +17,9 @@ h1 {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    background: rgba(255, 105, 180, 0.4);
+    background: rgba(255, 255, 255, 0.6);
     padding: 10px;
-    width: 575px;
+    width: 600px;
     height: 650px;
     margin: 30px;
     margin-top: 75px;
@@ -39,6 +39,11 @@ h1 {
 
   .floater-right {
       float: right;
+  }
+
+  img {
+      height: 150px;
+      width: 150px;
   }
 
   /* footer styles */
