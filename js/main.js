@@ -59,6 +59,8 @@ gameBoard.addEventListener("click", function(event) {
 
 });
 
+resetButton.addEventListener("click", resetGame);
+
 
 /*----- functions -----*/
 
@@ -71,6 +73,9 @@ function initGame() {
     }
 }
 
+function resetGame() {
+    initGame();
+}
 
 
 
