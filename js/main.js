@@ -23,7 +23,30 @@
 var playedTiles;
 var lastMove;
 var moves = [];
+var sunMoves = [];
+var cloudMoves = [];
+var sunCount = 0;
+var cloudCount = 0;
 var currentPlayer ="sun";
+
+
+
+var winningMoves = [
+    ["A1", "A2", "A3"], 
+    ["B1", "B2", "B3"], 
+    ["C1", "C2", "C3"], 
+    ["A1", "B1", "C1"],
+    ["A2", "B2", "C2"],
+    ["A3", "B3", "C3"],
+    ["A1", "B2", "C3"],
+    ["A3", "B2", "C1"]
+]
+
+
+
+
+    
+
 
 
 /*----- cached element references -----*/
@@ -46,17 +69,22 @@ gameBoard.addEventListener("click", function(event) {
         return;  
     } else {
         moves.push(singleTile);
+        if (moves.length === 3) {
+            checkForWin();
+        }
     }
 
     switch (lastMove) {
         case "sun":
             event.target.src = "img/cloud.png";
             lastMove = "cloud";
+            cloudMoves.push(singleTile);
             break;
         case "cloud":
         default:
             event.target.src = "img/sun.png";
             lastMove = "sun";
+            sunMoves.push(singleTile);
     }
     setCurrentPlayer();
 });
@@ -88,6 +116,8 @@ function setCurrentPlayer() {
     currentPlayerToken.innerHTML = "<h3>Current Player:</h3><img src='img/" + currentPlayer + ".png'>";
 }
 
+function checkForWin() {
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
