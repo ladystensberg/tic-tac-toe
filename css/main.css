@@ -4,13 +4,29 @@ body {
     background-image: url(../img/143279-OTIJP6-161.jpg);
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Pacifico', cursive;
 }
 
 h1 {
-    text-align: right;
-    margin: 100px;
-    font-size: 75pt;
+    font-size: 35pt;
+    color: hotpink;
 }
+
+p {
+    font-size: 15pt;
+    color: white;
+    display: inline-block;
+}
+
+#name a {
+    color: hotpink;
+}
+
+a {
+    color: #00BFFF;
+    text-decoration: none;
+}
+
 
 /* tic-tac-toe board styles*/
 
@@ -26,6 +42,15 @@ h1 {
     grid-column-gap: 12px;
     grid-row-gap: 12px;
   }
+
+  .grid-container.floater-right {
+      background: rgba(255, 255, 255, 0.6);
+      grid-template-columns: auto;
+      width: 500px;
+      height: 650px;
+  }
+
+
   .grid-item {
     background: rgba(255, 255, 255, 0.5);
     padding: 20px;
@@ -50,10 +75,10 @@ h1 {
 
   footer {
     position:fixed;
-    padding: 20px;
     left:0px;
     bottom:0px;
     height:60px;
     width:100%;
-    background: rgba(255, 105, 180, 0.4);
+    background: rgba(255, 105, 180, 0.2);
+    padding: 30px;
   }

@@ -21,9 +21,9 @@
 /*----- app's state (variables) -----*/
 
 var playedTiles;
-var resetGame;
 var lastMove;
 var moves = [];
+var currentPlayer ="sun";
 
 
 /*----- cached element references -----*/
@@ -32,7 +32,7 @@ var body = document.body;
 var resetButton = document.querySelector("button");
 var gameBoard = document.getElementById("game-board");
 var gameTiles = document.getElementById("game-board").children;
-
+var currentPlayerToken = document.getElementById("current-player-token");
 
 /*----- event listeners -----*/
 
@@ -58,7 +58,7 @@ gameBoard.addEventListener("click", function(event) {
             event.target.src = "img/sun.png";
             lastMove = "sun";
     }
-
+    setCurrentPlayer();
 });
 
 
@@ -69,6 +69,7 @@ function initGame() {
     for (let tile in gameTiles) {
         gameTiles[tile].innerHTML = "<img src='img/rainbow.png'>";
     }
+    setCurrentPlayer();
 }
 
 function resetGame() {
@@ -78,7 +79,14 @@ function resetGame() {
     initGame();
 }
 
-
+function setCurrentPlayer() {
+    if (lastMove === "sun") {
+        currentPlayer = "cloud";
+    } else {
+        currentPlayer = "sun";
+    }
+    currentPlayerToken.innerHTML = "<h3>Current Player:</h3><img src='img/" + currentPlayer + ".png'>";
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
