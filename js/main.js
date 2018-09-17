@@ -121,11 +121,16 @@ function checkForWin() {
         for (var i = 0; i < winningMoves.length; i++) {
             let [a,b,c] = winningMoves[i];
             if (sunMoves.includes(a) && sunMoves.includes(b) && sunMoves.includes(c)) {
-                alert(currentWinner = "SUN WINS!!");
-                resetGame();
+                setTimeout(function() { 
+                    alert(currentWinner = "SUN WINS!!");
+                    resetGame(); 
+                }, 1000);
+                
             } else if (cloudMoves.includes(a) && cloudMoves.includes(b) && cloudMoves.includes(c)) {
-                alert(currentWinner = "CLOUD WINS!!");
-                resetGame();
+                setTimeout(function() { 
+                    alert(currentWinner = "CLOUD WINS!!");
+                    resetGame(); 
+                }, 1000);
             }
         }
     }
