@@ -20,14 +20,12 @@
 
 /*----- app's state (variables) -----*/
 
-var playedTiles;
 var lastMove;
 var moves = [];
 var sunMoves = [];
 var cloudMoves = [];
-var sunCount = 0;
-var cloudCount = 0;
 var currentPlayer ="sun";
+var currentWinner = "";
 
 
 
@@ -59,8 +57,6 @@ var currentPlayerToken = document.getElementById("current-player-token");
 
 /*----- event listeners -----*/
 
-resetButton.addEventListener("click", resetGame);
-
 gameBoard.addEventListener("click", function(event) {
 
     var singleTile = event.target.parentNode.id;
@@ -83,9 +79,12 @@ gameBoard.addEventListener("click", function(event) {
             lastMove = "sun";
             sunMoves.push(singleTile);
     }
+
     setCurrentPlayer();
     checkForWin();
 });
+
+resetButton.addEventListener("click", resetGame);
 
 
 /*----- functions -----*/
@@ -99,9 +98,12 @@ function initGame() {
 }
 
 function resetGame() {
-    playedTiles = [];
-    moves = [];
     lastMove = "";
+    moves = [];
+    sunMoves = [];
+    cloudMoves = [];
+    currentPlayer ="sun";
+    currentWinner = "";
     initGame();
 }
 
@@ -111,37 +113,24 @@ function setCurrentPlayer() {
     } else {
         currentPlayer = "sun";
     }
-    currentPlayerToken.innerHTML = "<h3>Current Player:</h3><img src='img/" + currentPlayer + ".png'>";
+    currentPlayerToken.innerHTML = "<h2>Current Player:</h2><img src='img/" + currentPlayer + ".png'>";
 }
 
 function checkForWin() {
-    var currentWinner;
     if (sunMoves.length >= 3 || cloudMoves.length >= 3) {
         for (var i = 0; i < winningMoves.length; i++) {
-            if (sunMoves.includes(...winningMoves[i])) {
-                console.log("SUN WINS");
-            } else if (cloudMoves.includes(...winningMoves[i])) {
-                console.log("Cloud wins!");
+            let [a,b,c] = winningMoves[i];
+            if (sunMoves.includes(a) && sunMoves.includes(b) && sunMoves.includes(c)) {
+                alert(currentWinner = "SUN WINS!!");
+                resetGame();
+            } else if (cloudMoves.includes(a) && cloudMoves.includes(b) && cloudMoves.includes(c)) {
+                alert(currentWinner = "CLOUD WINS!!");
+                resetGame();
             }
         }
     }
  }
 
-// function isSunWinner() {
-//     var currentWinner;
-//     if (sunMoves.length >= 3) {
-//         for (let item of sunMoves) {
-//             for (let move of winningMoves) {
-//                 if (move.includes(item)) {
-//                     continue;
-//                 } else {
-//                     return false;
-//                 }
-//             }
-//         }
-//     }
-//     return console.log("SUN WINS");
-// }
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
