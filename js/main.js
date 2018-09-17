@@ -69,9 +69,6 @@ gameBoard.addEventListener("click", function(event) {
         return;  
     } else {
         moves.push(singleTile);
-        if (moves.length === 3) {
-            checkForWin();
-        }
     }
 
     switch (lastMove) {
@@ -87,6 +84,7 @@ gameBoard.addEventListener("click", function(event) {
             sunMoves.push(singleTile);
     }
     setCurrentPlayer();
+    checkForWin();
 });
 
 
@@ -117,7 +115,33 @@ function setCurrentPlayer() {
 }
 
 function checkForWin() {
-}
+    var currentWinner;
+    if (sunMoves.length >= 3 || cloudMoves.length >= 3) {
+        for (var i = 0; i < winningMoves.length; i++) {
+            if (sunMoves.includes(...winningMoves[i])) {
+                console.log("SUN WINS");
+            } else if (cloudMoves.includes(...winningMoves[i])) {
+                console.log("Cloud wins!");
+            }
+        }
+    }
+ }
+
+// function isSunWinner() {
+//     var currentWinner;
+//     if (sunMoves.length >= 3) {
+//         for (let item of sunMoves) {
+//             for (let move of winningMoves) {
+//                 if (move.includes(item)) {
+//                     continue;
+//                 } else {
+//                     return false;
+//                 }
+//             }
+//         }
+//     }
+//     return console.log("SUN WINS");
+// }
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
